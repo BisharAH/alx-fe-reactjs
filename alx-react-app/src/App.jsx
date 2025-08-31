@@ -64,9 +64,9 @@ function App() {
 
       {/* Our new component here 👇 */}
       <WelcomeMessage />
-      <Header/>
-      <MainContent/>
-      <Footer/>
+      <Header />
+      <MainContent />
+      <Footer />
       
 
       <div className="card">
