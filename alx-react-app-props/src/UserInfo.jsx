@@ -1,8 +1,16 @@
-
+import React from 'react';
 import UserDetails from './UserDetails';
 
+
 function UserInfo() {
-  return <UserDetails />;
+// no props required any more
+return (
+<section>
+<h2>User Info</h2>
+<UserDetails />
+</section>
+);
 }
 
-export default UserInfo;
+
+export default UserInfo
