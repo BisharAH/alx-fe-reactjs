@@ -1,6 +1,7 @@
 
-import UserDetails from "./components/UserDetails";
+import UserDetails from './UserDetails';
 
+// The 'userData' prop is no longer needed here
 function UserInfo() {
   return <UserDetails />;
 }
