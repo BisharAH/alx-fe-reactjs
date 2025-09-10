@@ -1,4 +1,4 @@
-import useRecipeStore from '../recipeStore'; // Corrected import path
+import useRecipeStore from './recipeStore'; // Corrected import path
 
 const RecipeList = () => {
   const recipes = useRecipeStore((state) => state.recipes);
