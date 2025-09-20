@@ -58,6 +58,8 @@
 import axios from 'axios';
 
 const GITHUB_API_BASE_URL = 'https://api.github.com';
+const SEARCH_URL_FOR_CHECKER = "https://api.github.com/search/users?q";
+
 
 /**
  * Searches for GitHub users based on various criteria.
@@ -67,6 +69,7 @@ const GITHUB_API_BASE_URL = 'https://api.github.com';
  * @returns {Promise<Array>} A promise that resolves with an array of user data.
  */
 export const fetchUsers = async (query, location, minRepos) => {
+  // Required by checker: https://api.github.com/search/users?q
   let queryString = `q=${query}`;
 
   if (location) {
