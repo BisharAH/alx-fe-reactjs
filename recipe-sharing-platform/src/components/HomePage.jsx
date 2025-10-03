@@ -1,11 +1,50 @@
-function UserProfile() {
+import React, { useState, useEffect } from "react"
+
+function HomePage() {
+  const [recipes, setRecipes] = useState([])
+
+  // Load recipes from data.json
+  useEffect(() => {
+    fetch("./data.json") // relative to public or src depending on setup
+      .then((res) => res.json())
+      .then((data) => setRecipes(data))
+      .catch((err) => console.error("Error loading recipes:", err))
+  }, [])
+
   return (
-    <div className="bg-gray-100 sm:p-4 md:p-8 max-w-xs md:max-w-sm mx-auto my-20 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out text-center">
-      <img src="https://cdn.pixabay.com/photo/2025/02/21/10/33/cat-9421720_1280.jpg" alt="User" className="sm:w-24 sm:h-24 md:w-36 md:h-36 rounded-full mx-auto transform transition-transform duration-300 ease-in-out hover:scale-110" />
-      <h1 className="sm:text-lg md:text-xl text-blue-800 my-4 transition-colors duration-300 ease-in-out hover:text-blue-500">John Doe</h1>
-      <p className="sm:text-sm md:text-base text-gray-600">Developer at Example Co. Loves to write code and explore new technologies.</p>
+    <div className="min-h-screen bg-gray-50 py-10 px-4">
+      <h1 className="text-4xl font-bold text-center text-blue-600 mb-8">
+        Recipe Sharing Platform
+      </h1>
+
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {recipes.map((recipe) => (
+          <div
+            key={recipe.id}
+            className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow transform hover:scale-105 overflow-hidden"
+          >
+            <img
+              src={recipe.image}
+              alt={recipe.title}
+              className="w-full h-48 object-cover"
+            />
+            <div className="p-4">
+              <h2 className="text-xl font-semibold text-gray-800">
+                {recipe.title}
+              </h2>
+              <p className="text-gray-600 mt-2 text-sm">{recipe.summary}</p>
+              <a
+                href={`/recipes/${recipe.id}`}
+                className="inline-block mt-4 text-blue-500 font-medium hover:underline"
+              >
+                View Recipe →
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
-  );
+  )
 }
 
-export default UserProfile;
+export default HomePage
