@@ -3,9 +3,9 @@ import React, { useState, useEffect } from "react"
 function HomePage() {
   const [recipes, setRecipes] = useState([])
 
-  // Load recipes from data.json
+  // Load recipes from data.json (place data.json in public/ folder)
   useEffect(() => {
-    fetch("./data.json") // relative to public or src depending on setup
+    fetch("./data.json")
       .then((res) => res.json())
       .then((data) => setRecipes(data))
       .catch((err) => console.error("Error loading recipes:", err))
@@ -17,7 +17,8 @@ function HomePage() {
         Recipe Sharing Platform
       </h1>
 
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {/* Responsive Grid with explicit grid-cols-1 */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {recipes.map((recipe) => (
           <div
             key={recipe.id}
