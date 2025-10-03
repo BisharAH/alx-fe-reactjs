@@ -1,20 +1,41 @@
 [
   {
     "id": 1,
-    "title": "Spaghetti Carbonara",
-    "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-    "image": "https://via.placeholder.com/300x200"
+    "title": "Spaghetti Bolognese",
+    "summary": "A classic Italian pasta dish with rich, meaty sauce.",
+    "image": "https://via.placeholder.com/400",
+    "ingredients": [
+      "200g spaghetti",
+      "100g minced beef",
+      "1 onion",
+      "2 cloves garlic",
+      "400g canned tomatoes"
+    ],
+    "instructions": [
+      "Boil pasta until al dente.",
+      "Fry onion and garlic until soft.",
+      "Add minced beef and cook until browned.",
+      "Stir in tomatoes and simmer for 20 minutes.",
+      "Serve sauce over spaghetti."
+    ]
   },
   {
     "id": 2,
-    "title": "Chicken Tikka Masala",
-    "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
-    "image": "https://via.placeholder.com/300x200"
-  },
-  {
-    "id": 3,
-    "title": "Vegetable Stir Fry",
-    "summary": "A quick and healthy dish made with fresh vegetables and savory soy sauce.",
-    "image": "https://via.placeholder.com/300x200"
+    "title": "Chicken Curry",
+    "summary": "Spicy and creamy curry with tender chicken pieces.",
+    "image": "https://via.placeholder.com/400",
+    "ingredients": [
+      "500g chicken breast",
+      "2 onions",
+      "3 tbsp curry powder",
+      "400ml coconut milk"
+    ],
+    "instructions": [
+      "Fry onions until golden.",
+      "Add chicken and cook until browned.",
+      "Stir in curry powder and mix well.",
+      "Pour in coconut milk and simmer 25 minutes.",
+      "Serve with rice."
+    ]
   }
 ]
