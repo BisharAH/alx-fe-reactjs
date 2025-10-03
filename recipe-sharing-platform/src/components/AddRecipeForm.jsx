@@ -3,17 +3,16 @@ import React, { useState } from "react"
 function AddRecipeForm() {
   const [title, setTitle] = useState("")
   const [ingredients, setIngredients] = useState("")
-  const [instructions, setInstructions] = useState("")
+  const [steps, setSteps] = useState("")
   const [errors, setErrors] = useState({})
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    // Simple validation
     const newErrors = {}
     if (!title.trim()) newErrors.title = "Title is required"
     if (!ingredients.trim()) newErrors.ingredients = "Ingredients are required"
-    if (!instructions.trim()) newErrors.instructions = "Instructions are required"
+    if (!steps.trim()) newErrors.steps = "Steps are required"
 
     setErrors(newErrors)
 
@@ -21,14 +20,14 @@ function AddRecipeForm() {
       const recipe = {
         title,
         ingredients: ingredients.split("\n"),
-        instructions: instructions.split("\n")
+        steps: steps.split("\n"),
       }
       console.log("Recipe submitted:", recipe)
 
       // Reset form
       setTitle("")
       setIngredients("")
-      setInstructions("")
+      setSteps("")
       alert("Recipe submitted successfully!")
     }
   }
@@ -69,18 +68,18 @@ function AddRecipeForm() {
             {errors.ingredients && <p className="text-red-500 text-sm mt-1">{errors.ingredients}</p>}
           </div>
 
-          {/* Instructions */}
+          {/* Steps */}
           <div>
-            <label className="block font-medium mb-1">Instructions (one step per line)</label>
+            <label className="block font-medium mb-1">Steps (one per line)</label>
             <textarea
               className={`w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 ${
-                errors.instructions ? "border-red-500" : "border-gray-300"
+                errors.steps ? "border-red-500" : "border-gray-300"
               }`}
               rows={5}
-              value={instructions}
-              onChange={(e) => setInstructions(e.target.value)}
+              value={steps}
+              onChange={(e) => setSteps(e.target.value)}
             ></textarea>
-            {errors.instructions && <p className="text-red-500 text-sm mt-1">{errors.instructions}</p>}
+            {errors.steps && <p className="text-red-500 text-sm mt-1">{errors.steps}</p>}
           </div>
 
           {/* Submit */}
