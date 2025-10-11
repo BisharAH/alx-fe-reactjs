@@ -36,7 +36,7 @@ function FormikForm() {
         <Form>
           <h2>Formik & Yup Form</h2>
           <div>
-            <label htmlFor="username">Username:</label>
+            <label htmlFor="userName">Username:</label>
             <Field type="text" name="username" />
             <ErrorMessage name="username" component="div" className="error" />
           </div>
