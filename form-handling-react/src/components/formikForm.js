@@ -1,16 +1,17 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
+// Change the yup import to be a named import
+import { object, string } from 'yup';
 
-// Yup validation schema
-const validationSchema = Yup.object({
-  username: Yup.string()
+// Yup validation schema using the named imports
+const validationSchema = object({
+  username: string()
     .max(15, 'Must be 15 characters or less')
     .required('Username is required'),
-  email: Yup.string()
+  email: string()
     .email('Invalid email address')
     .required('Email is required'),
-  password: Yup.string()
+  password: string()
     .min(8, 'Password must be at least 8 characters')
     .required('Password is required'),
 });
@@ -36,7 +37,7 @@ function FormikForm() {
         <Form>
           <h2>Formik & Yup Form</h2>
           <div>
-            <label htmlFor="userName">Username:</label>
+            <label htmlFor="username">Username:</label>
             <Field type="text" name="username" />
             <ErrorMessage name="username" component="div" className="error" />
           </div>
