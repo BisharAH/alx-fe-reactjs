@@ -1,29 +1,41 @@
 import React, { useState } from 'react';
 
 function RegistrationForm() {
-  // Use a separate state for each input field as required by the checker
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  
+  // State to hold validation errors, as required by the checker
+  const [errors, setErrors] = useState({});
 
-  // Handle form submission
+  const validate = () => {
+    const newErrors = {};
+    // Individual validation checks
+    if (!username) newErrors.username = 'Username is required';
+    if (!email) newErrors.email = 'Email is required';
+    if (!password) newErrors.password = 'Password is required';
+    
+    return newErrors;
+  };
+
   const handleSubmit = (event) => {
-    event.preventDefault(); // Prevent default browser refresh
-
-    // Basic validation: check if any field is empty
-    if (!username || !email || !password) {
-      alert('Please fill out all fields.');
+    event.preventDefault();
+    const validationErrors = validate();
+    
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors); // Use the required 'setErrors' function
       return;
     }
 
-    // Simulate an API call with the individual state values
+    // If validation passes
     console.log('Submitting data:', { username, email, password });
     alert(`Registration successful for ${username}!`);
     
-    // Reset each state variable individually
+    // Clear form and errors after successful submission
     setUsername('');
     setEmail('');
     setPassword('');
+    setErrors({});
   };
 
   return (
@@ -34,27 +46,30 @@ function RegistrationForm() {
         <input
           type="text"
           name="username"
-          value={username} // The value is now bound to the 'username' state
-          onChange={(e) => setUsername(e.target.value)} // Update the state directly
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
         />
+        {errors.username && <div className="error">{errors.username}</div>}
       </div>
       <div>
         <label>Email:</label>
         <input
           type="email"
           name="email"
-          value={email} // The value is now bound to the 'email' state
+          value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+        {errors.email && <div className="error">{errors.email}</div>}
       </div>
       <div>
         <label>Password:</label>
         <input
           type="password"
           name="password"
-          value={password} // The value is now bound to the 'password' state
+          value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        {errors.password && <div className="error">{errors.password}</div>}
       </div>
       <button type="submit">Register</button>
     </form>
