@@ -1,0 +1,12 @@
+/* minimal base styles */
+html, body, #root {
+height: 100%;
+}
+body {
+margin: 0;
+background: #fafafa;
+color: #111;
+}
+input, button {
+font: inherit;
+}

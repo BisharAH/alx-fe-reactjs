@@ -1,0 +1,12 @@
+import './App.css';
+
+function App() {
+  return (
+    <div className="App">
+      <h1>React Form Handling</h1>
+      {/* We will add our form components here */}
+    </div>
+  );
+}
+
+export default App;
