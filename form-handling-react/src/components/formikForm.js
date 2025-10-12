@@ -4,14 +4,14 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { object, string } from 'yup';
 
 // The validation schema now uses string() and object() directly
-const validationSchema = object({
-  username: string().required
+const validationSchema = Yub.object({
+  username: Yub.string().required
     .max(15, 'Must be 15 characters or less')
     .required('Username is required'),
-  email: string().required
+  email: Yup.string().required
     .email('Invalid email address')
     .required('Email is required'),
-  password: string().required
+  password: Yub.string().required
     .min(8, 'Password must be at least 8 characters')
     .required('Password is required'),
 });
