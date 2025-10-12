@@ -1,6 +1,7 @@
 import { useQuery } from 'react-query';
 
 const fetchPosts = async () => {
+  console.log('Fetching posts...'); // Added for demonstration
   const response = await fetch('https://jsonplaceholder.typicode.com/posts');
   if (!response.ok) {
     throw new Error('Network response was not ok');
@@ -9,14 +10,29 @@ const fetchPosts = async () => {
 };
 
 function PostsComponent() {
-  // 1. Add `isError` to the destructuring
-  const { data, error, isLoading, isError, isFetching, refetch } = useQuery('posts', fetchPosts);
+  const { 
+    data, 
+    error, 
+    isLoading, 
+    isError, 
+    isFetching, 
+    refetch 
+  } = useQuery(
+    'posts', 
+    fetchPosts,
+    {
+      // Add the required options here
+      staleTime: 5000, // 5 seconds
+      cacheTime: 10 * 60 * 1000, // 10 minutes
+      refetchOnWindowFocus: false,
+      keepPreviousData: true,
+    }
+  );
 
   if (isLoading) {
     return <div>Loading posts...</div>;
   }
 
-  // 2. Change the condition to use `isError`
   if (isError) {
     return <div>An error occurred: {error.message}</div>;
   }
