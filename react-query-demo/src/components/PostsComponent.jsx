@@ -9,14 +9,15 @@ const fetchPosts = async () => {
 };
 
 function PostsComponent() {
-  // Destructure refetch and isFetching from useQuery
-  const { data, error, isLoading, isFetching, refetch } = useQuery('posts', fetchPosts);
+  // 1. Add `isError` to the destructuring
+  const { data, error, isLoading, isError, isFetching, refetch } = useQuery('posts', fetchPosts);
 
   if (isLoading) {
     return <div>Loading posts...</div>;
   }
 
-  if (error) {
+  // 2. Change the condition to use `isError`
+  if (isError) {
     return <div>An error occurred: {error.message}</div>;
   }
 
