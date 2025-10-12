@@ -1,9 +1,9 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-// Change the yup import to be a named import
+// Use named imports for object and string from yup
 import { object, string } from 'yup';
 
-// Yup validation schema using the named imports
+// The validation schema now uses string() and object() directly
 const validationSchema = object({
   username: string()
     .max(15, 'Must be 15 characters or less')
@@ -18,7 +18,6 @@ const validationSchema = object({
 
 function FormikForm() {
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
-    // Simulate an API call
     console.log('Submitting Formik data:', values);
     setTimeout(() => {
       alert(`Formik registration successful for ${values.username}!`);
